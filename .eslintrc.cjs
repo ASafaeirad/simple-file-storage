@@ -15,5 +15,6 @@ module.exports = {
     'prefer-destructuring': 'off',
     'consistent-return': 'off',
     'no-console': 'off',
+    'no-throw-literal': 'off',
   },
 };

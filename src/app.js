@@ -19,9 +19,12 @@ app.use('/', fileRouter);
 
 app.use((_, res) => res.status(404).end());
 
-app.use((err, _, res) => {
-  res.status(err.statusCode || 500).end();
-  console.error(err);
+// Express API is so smart :)
+/* eslint-disable-next-line no-unused-vars */
+app.use((err, _, res, next) => {
+  const status = err.status ?? 500;
+  res.status(status).json({ message: err.message });
+  if (status === 500) console.error(err);
 });
 
 export { app };

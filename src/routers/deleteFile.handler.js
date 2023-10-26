@@ -13,7 +13,7 @@ export async function deleteFile(req, res, next) {
     }
 
     const filePath = resolvePath(id);
-    await fs.unlink(filePath);
+    await fs.unlink(filePath).catch(() => {});
 
     return res.status(204).end();
   } catch (e) {

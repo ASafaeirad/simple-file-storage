@@ -13,7 +13,9 @@ export async function getFile(req, res, next) {
     }
 
     const filePath = resolvePath(id);
-    await fs.stat(filePath).catch(() => new Error('404'));
+    await fs.stat(filePath).catch(() => {
+      throw { status: 404, message: 'not.found' };
+    });
 
     res.setHeader('Content-Disposition', `inline; fileName="${id}"`);
     const fileStream = createReadStream(filePath);
