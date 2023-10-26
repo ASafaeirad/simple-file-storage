@@ -4,22 +4,23 @@ A lightweight and easy-to-use file storage for local development and testing env
 
 ## Usage
 
-1. Clone this repository to your local machine.
-2. Start the application by running:
-   ```
-   pnpm start
-   ```
-   Alternatively, you can use Docker:
-   ```
-   docker-compose up
-   ```
-   If needed,
-   you can modify the location
-   where files are stored on the local disk
-   by editing the `docker-compose.yml` file.
-   By default,
-   files are stored in the `./storage` directory at the root of the project.
-3. If you want to customize the default settings, such as the `PORT` (default is 9009), or make other configuration changes, create a `.env` file in the project's root directory. Refer to the `.env.example` file for guidance on setting the environment variables.
+1. **Clone the Repository:**
+   Clone this repository to your local machine.
+
+2. **Start the Application:**
+   - Using PNPM:
+     ```bash
+     pnpm start
+     ```
+   - Using Docker:
+     ```bash
+     docker-compose up
+     ```
+     *Note: You can change the local storage location by editing the `docker-compose.yml` file. By default, files are stored in the `./storage` directory at the project root.*
+
+## Configuration
+
+To modify default settings like `PORT` (default: 9009), create a `.env` file in the project's root. Use `.env.example` as a reference for setting environment variables.
 
 ## API
 
@@ -39,6 +40,7 @@ type UploadedFile = {
 ```
 
 If an error occurs during upload, the response will be in the following format:
+
 ```typescript
 type UploadError = {
   message?: string;
@@ -49,7 +51,7 @@ type UploadError = {
 
 To download a file, you can use the following code:
 ```typescript
-fetch('localhost:<PORT>/f/<FILENAME>')
+fetch('<ENDPOINT>/<FILENAME>')
 ```
 The response will be a blob with the `Content-Type` header
 set to the file's MIME type.
@@ -57,10 +59,13 @@ The appropriate `Content-Disposition` header will also be included
 to allow the file to be saved with its original name.
 
 To retrieve a list of all uploaded files, use the following code:
+
 ```typescript
-fetch('localhost:<PORT>/f')
+fetch('<ENDPOINT>/')
 ```
+
 The response will be in the following format:
+
 ```typescript
 type UploadedFiles = UploadedFile[];
 ```
@@ -68,6 +73,7 @@ type UploadedFiles = UploadedFile[];
 ### Delete
 
 To delete a file, use the following code:
+
 ```typescript
-fetch('localhost:<PORT>/f/<FILENAME>', { method: 'DELETE' })
+fetch('<ENDPOINT>/<FILENAME>', { method: 'DELETE' })
 ```
