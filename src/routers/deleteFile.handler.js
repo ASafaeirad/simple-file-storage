@@ -1,6 +1,6 @@
 // @ts-check
 import fs from 'node:fs/promises';
-import { config } from '../configs/app.config.js';
+import { resolvePath } from '../utils/storage.js';
 
 export async function deleteFile(req, res, next) {
   try {
@@ -12,10 +12,10 @@ export async function deleteFile(req, res, next) {
       });
     }
 
-    const filePath = `${config.storagePath}/${id}`;
+    const filePath = resolvePath(id);
     await fs.unlink(filePath);
 
-    return res.status(204);
+    return res.status(204).end();
   } catch (e) {
     next(e);
   }

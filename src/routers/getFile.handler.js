@@ -1,6 +1,6 @@
 import { promises as fs, createReadStream } from 'node:fs';
 import sanitize from 'sanitize-filename';
-import { config } from '../configs/app.config.js';
+import { resolvePath } from '../utils/storage.js';
 
 export async function getFile(req, res, next) {
   try {
@@ -12,7 +12,7 @@ export async function getFile(req, res, next) {
       });
     }
 
-    const filePath = `${config.storagePath}/${id}`;
+    const filePath = resolvePath(id);
     await fs.stat(filePath).catch(() => new Error('404'));
 
     res.setHeader('Content-Disposition', `inline; fileName="${id}"`);

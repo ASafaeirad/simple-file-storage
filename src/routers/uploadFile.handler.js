@@ -17,8 +17,8 @@ export async function uploadFile(req, res, next) {
     if (!req.file) return res.status(400).send({ message: 'No file Received' });
 
     return res.json({
-      fileName: req.file.filename,
-      originalName: fileName,
+      id: req.file.filename,
+      name: fileName,
       mimeType: req.file.mimetype,
       size: req.file.size,
     });
