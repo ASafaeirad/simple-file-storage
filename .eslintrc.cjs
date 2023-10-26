@@ -14,7 +14,6 @@ module.exports = {
     'space-unary-ops': 'off',
     'prefer-destructuring': 'off',
     'consistent-return': 'off',
-    'no-console': 'off',
     'no-throw-literal': 'off',
   },
 };

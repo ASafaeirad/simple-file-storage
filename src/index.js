@@ -1,16 +1,17 @@
 import 'dotenv/config';
 import { app } from './app.js';
 import { config } from './configs/app.config.js';
+import { logger } from './utils/logger.js';
 
 const server = app.listen(config.port, () => {
-  console.log('App started with configs:\n', config);
-  console.log(`Server is running at: http://${config.host}:${config.port}`);
+  logger.info(`Server is running at: http://${config.host}:${config.port}`);
+  logger.info(config);
 });
 
 async function closeGracefully(signal) {
-  console.log(`=> Received signal to terminate: ${signal}`);
+  logger.warn(`=> Received signal to terminate: ${signal}`);
   server.close((err) => {
-    console.log(err ? `Error while closing the server: ${err}` : 'Server closed gracefully');
+    logger.warn(err ? `Error while closing the server: ${err}` : 'Server closed gracefully');
     process.kill(process.pid, signal);
   });
 }

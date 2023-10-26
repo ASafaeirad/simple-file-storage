@@ -1,16 +1,17 @@
 // @ts-check
 import sanitize from 'sanitize-filename';
 import { upload } from '../configs/multer.config.js';
+import { logger } from '../utils/logger.js';
 
 const saveSingleFile = upload.single('file');
 export async function uploadFile(req, res, next) {
   return saveSingleFile(req, res, (err) => {
-    console.log('\n====== Received new file ======', '\nRequest info:\n', {
+    req.log.info('\n====== Received new file ======', '\nRequest info:\n', {
       ip: req.ip,
       hostname: req.hostname,
     });
     if (err) return next(err);
-    console.log('File:\n', req.file);
+    req.log.info('File:\n', req.file);
 
     const fileName = sanitize(req.file.originalname);
 
