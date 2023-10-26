@@ -1,4 +1,4 @@
-import { decodeJwt } from '../utils/helpers.js';
+import { decodeJwt } from '../utils/jwt.js';
 import { config } from '../configs/app.config.js';
 
 export async function authMiddleware(req, res, next) {

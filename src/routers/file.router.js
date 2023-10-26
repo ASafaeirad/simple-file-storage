@@ -4,7 +4,7 @@ import path from 'path';
 import sanitize from 'sanitize-filename';
 import { upload } from '../configs/multer.config.js';
 import { authMiddleware } from '../middlewares/auth.middleware.js';
-import { generateId } from '../utils/helpers.js';
+import { generateId } from '../utils/uuid.js';
 
 const router = Router();
 

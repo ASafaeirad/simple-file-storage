@@ -1,10 +1,9 @@
 import 'dotenv/config';
 import { app } from './app.js';
 import { config } from './configs/app.config.js';
-import { logConfigs } from './utils/helpers.js';
 
 const server = app.listen(config.port, () => {
-  logConfigs();
+  console.log('App started with configs:\n', config);
   console.log(`Server is running at: http://${config.host}:${config.port}`);
 });
 

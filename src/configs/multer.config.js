@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import multer from 'multer';
 import { config } from './app.config.js';
-import { generateId } from '../utils/helpers.js';
+import { generateId } from '../utils/uuid.js';
 
 export const upload = multer({
   storage: multer.diskStorage({
