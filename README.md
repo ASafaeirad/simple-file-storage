@@ -26,7 +26,7 @@ To modify default settings like `PORT` (default: 9009), create a `.env` file in 
 
 ### Upload
 
-To upload a file, send a `multipart/form-data` POST request to `/f`.
+To upload a file, send a `multipart/form-data` POST request to `/`.
 Include the file blob in the request body, setting the `myFile` property.
 
 On successful upload, the response will be in the following format:
