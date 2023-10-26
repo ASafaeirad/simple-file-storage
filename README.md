@@ -52,7 +52,7 @@ To modify default settings like `PORT` (default: 9009), create a `.env` file in 
 - **Endpoint:** `GET /`
 - **Success Response:**
   ```typescript
-  type FilesEntity {
+  type FilesEntity = {
     files: File[]
   }
   ```
