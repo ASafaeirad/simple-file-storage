@@ -7,15 +7,6 @@ export const generateId = customAlphabet(
   20,
 );
 
-export function fileNameExtSplit(fullName = '') {
-  const idx = fullName.lastIndexOf('.');
-  if (idx === -1) return [fullName, ''];
-  const name = fullName.slice(0, idx);
-  // if file name is like `.example`
-  if (!name) return [fullName, ''];
-  return [name, fullName.slice(idx + 1)];
-}
-
 export async function signJwt(token = {}, secret = '', opt = {}) {
   return new Promise((resolve, reject) => {
     jwt.sign(token, secret, opt, (err, encoded) => {
