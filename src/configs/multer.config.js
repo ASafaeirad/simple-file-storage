@@ -1,23 +1,22 @@
-import fs from "fs";
-import path from "path";
-import multer from "multer";
-import { UPLOAD_MAX_FILE_SIZE } from "./app.config.js";
-import { generateId } from "../utils/helpers.js";
+import fs from 'fs';
+import path from 'path';
+import multer from 'multer';
+import { config } from './app.config.js';
+import { generateId } from '../utils/helpers.js';
 
-//Multer handle File Uploads
 export const upload = multer({
   storage: multer.diskStorage({
-    destination: function (req, file, cb) {
-      const path = "storage/";
-      fs.mkdirSync(path, { recursive: true });
-      cb(null, path);
+    destination(req, file, cb) {
+      const filePath = 'storage/';
+      fs.mkdirSync(filePath, { recursive: true });
+      cb(null, filePath);
     },
-    filename: function (req, file, cb) {
+    filename(req, file, cb) {
       cb(null, generateId() + path.extname(file.originalname).trim().toLowerCase());
     },
   }),
-  limits: { fileSize: UPLOAD_MAX_FILE_SIZE },
-  fileFilter: function (req, file, cb) {
+  limits: { fileSize: config.maxUploadFileSize },
+  fileFilter(req, file, cb) {
     cb(null, true);
   },
 });

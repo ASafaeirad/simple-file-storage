@@ -1,3 +1,3 @@
-export function assert(condition, errorMsg) {
-  if (!condition) throw new Error(errorMsg || "assertion error");
+export function assert(condition, errorMsg = 'assertion failed') {
+  if (!condition) throw new Error(errorMsg);
 }
