@@ -9,8 +9,8 @@ import { getFiles } from './getFiles.handler.js';
 const fileRouter = Router();
 
 fileRouter.post('/', authMiddleware, uploadFile);
-fileRouter.delete('/:fileName', authMiddleware, deleteFile);
-fileRouter.get('/:fileName', getFile);
+fileRouter.delete('/:id', authMiddleware, deleteFile);
+fileRouter.get('/:id', getFile);
 fileRouter.get('/', authMiddleware, getFiles);
 
 export { fileRouter };

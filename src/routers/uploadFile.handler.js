@@ -2,7 +2,7 @@
 import sanitize from 'sanitize-filename';
 import { upload } from '../configs/multer.config.js';
 
-const saveSingleFile = upload.single('myFile');
+const saveSingleFile = upload.single('file');
 export async function uploadFile(req, res, next) {
   return saveSingleFile(req, res, (err) => {
     console.log('\n====== Received new file ======', '\nRequest info:\n', {
