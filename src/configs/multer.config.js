@@ -7,7 +7,7 @@ import { generateId } from '../utils/uuid.js';
 export const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, cb) {
-      const filePath = 'storage/';
+      const filePath = config.storagePath;
       fs.mkdirSync(filePath, { recursive: true });
       cb(null, filePath);
     },

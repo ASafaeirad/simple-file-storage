@@ -5,4 +5,5 @@ export const config = {
   jwtSecret: process.env.JWT_SECRET,
   defaultTokenAge: process.env.DEFAULT_TOKEN_AGE || 5 * 60,
   host: process.env.HOST || 'localhost',
+  storagePath: process.env.STORAGE_PATH ?? 'storage',
 };
