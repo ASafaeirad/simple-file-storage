@@ -10,6 +10,12 @@ export async function uploadFile(req, res, next) {
       ip: req.ip,
       hostname: req.hostname,
     });
+    if (!req.file) {
+      return res.status(400).json({
+        message: 'validation.failed',
+        fields: { file: 'required' },
+      });
+    }
     if (err) return next(err);
     req.log.info('File:\n', req.file);
 
